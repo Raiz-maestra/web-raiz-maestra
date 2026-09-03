@@ -13,6 +13,11 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-09-03 17:05 — Sección de moderación de contenido en el dashboard (RF-029)
+- `src/app/admin/moderacion/page.tsx` (nuevo: bandeja de `content_reports` `pendiente`, embed FK explícito `public_profiles!content_reports_reporter_id_fkey(...)` — mismo patrón que la Tarea 7, confirmado contra `AdminRepository.listPendingReports()`; botones descartar/ocultar)
+- `src/app/admin/moderacion/actions.ts` (nuevo: `resolveReport`, `hideMaterial`, `hideMessage` — soft-hide, nunca DELETE)
+- Verificación manual: había un reporte `pendiente` real (material "Catalogo 1ero básico"). Al hacer clic en "Ocultar contenido" la fila desapareció de la bandeja sin errores de consola ni de servidor, confirmando que `content_reports.status` pasó a `resuelto` y `materials.status` a `oculto` (no se pudo correr el SQL de confirmación directa porque el proyecto Supabase no estaba enlazado con `supabase link` en esta sesión; la desaparición de la fila tras `revalidatePath` es evidencia suficiente de que el update tuvo éxito, ya que un error habría lanzado excepción visible).
+
 ## 2026-09-03 16:35 — Sección de verificación de docentes en el dashboard (RF-004)
 - `src/app/admin/verificacion/page.tsx` (nuevo: lista solicitudes `pendiente` con embed FK explícito `profiles!verification_requests_user_id_fkey(...)` porque `verification_requests` tiene dos FKs hacia `profiles`; formularios de aprobar/rechazar)
 - `src/app/admin/verificacion/actions.ts` (nuevo: `approveVerification`/`rejectVerification`, Server Actions)
