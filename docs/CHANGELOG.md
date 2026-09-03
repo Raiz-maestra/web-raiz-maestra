@@ -13,6 +13,11 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-09-03 16:35 — Sección de verificación de docentes en el dashboard (RF-004)
+- `src/app/admin/verificacion/page.tsx` (nuevo: lista solicitudes `pendiente` con embed FK explícito `profiles!verification_requests_user_id_fkey(...)` porque `verification_requests` tiene dos FKs hacia `profiles`; formularios de aprobar/rechazar)
+- `src/app/admin/verificacion/actions.ts` (nuevo: `approveVerification`/`rejectVerification`, Server Actions)
+- Verificación manual: sin solicitudes `pendiente` reales en la base al momento de probar — se confirmó solo por inspección visual en el navegador (sesión admin real, sin errores de consola); no se pudo ejercer el flujo completo de aprobar/rechazar contra datos reales.
+
 ## 2026-09-03 16:20 — Layout del dashboard de admin con sidebar de navegación
 - `src/app/admin/layout.tsx` (nuevo: guarda con `requireAdmin()`, sidebar con las 6 secciones, cerrar sesión)
 - `src/app/admin/page.tsx` (nuevo: redirige `/admin` a `/admin/verificacion`)
