@@ -46,6 +46,28 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Tokens de Raíz Maestra, copiados de src/theme/ de la app móvil. */
+  --color-rm-bg: #faf7ef;
+  --color-rm-surface: #ffffff;
+  --color-rm-border: #e2e5de;
+  --color-rm-ink: #18321a;
+  --color-rm-ink-secondary: #6f766d;
+  --color-rm-ink-muted: #565d53;
+  --color-rm-green: #3f9638;
+  --color-rm-green-dark: #26752d;
+  --color-rm-green-soft: #b0d5a0;
+  --color-rm-green-50: #eaf4e5;
+  --color-rm-sand: #efebdf;
+  --color-rm-blush: #ffe9d6;
+  --color-rm-peach: #fff3c9;
+  --color-rm-mint: #e4f0f8;
+  --color-rm-orange: #ff8a1f;
+  --color-rm-blue: #4a9bd5;
+  --color-rm-mustard: #b98a0a;
+  --radius-rm: 18px;
+  --shadow-rm: 0 2px 8px rgb(74 59 36 / 0.06);
+  --shadow-rm-lg: 0 6px 16px rgb(74 59 36 / 0.14);
 }
 
 :root {
