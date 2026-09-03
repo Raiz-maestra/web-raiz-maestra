@@ -12,12 +12,16 @@ export async function updateSession(request: NextRequest) {
         getAll() {
           return request.cookies.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet, headers) {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
           response = NextResponse.next({ request });
           cookiesToSet.forEach(({ name, value, options }) =>
             response.cookies.set(name, value, options),
           );
+          // Evita que un CDN/reverse proxy (incluido Vercel Edge) cachee esta
+          // respuesta: trae un Set-Cookie de sesión y cachearla filtraría el
+          // token de un usuario a otro.
+          Object.entries(headers).forEach(([key, value]) => response.headers.set(key, value));
         },
       },
     },
