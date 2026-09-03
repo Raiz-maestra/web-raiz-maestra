@@ -25,6 +25,38 @@ pedagógicos, mentorías 1 a 1, comunidad (foro), red de apoyo, autocuidado
 RLS en todas las tablas, autenticación real y storage real. Los 7 módulos
 (M0–M6) están completos en la app móvil.
 
+## Seguridad — repo público (regla innegociable, antes que cualquier otra cosa)
+
+**Este repo es público en GitHub.** Todo lo que se commitea es visible para
+cualquiera, para siempre (incluso si se borra después — queda en el
+historial). Esta regla se revisa **antes** de escribir código, no después:
+
+- **Nunca hardcodear ninguna key, token o URL de Supabase en código fuente,
+  commits, `docs/CHANGELOG.md`, comentarios, capturas de pantalla ni
+  mensajes de commit/PR.** Esto incluye `NEXT_PUBLIC_SUPABASE_URL` y
+  `NEXT_PUBLIC_SUPABASE_ANON_KEY` — que aunque terminan en el bundle del
+  cliente y están protegidas por RLS ("públicas" por diseño), igual **solo**
+  viven en variables de entorno (`.env.local` en local, variables de entorno
+  del proyecto en Vercel), nunca escritas literalmente en un archivo
+  versionado.
+- **La `service_role` key jamás entra a este repo**, en ninguna forma, bajo
+  ninguna circunstancia (ver también la sección "Base de datos" más abajo).
+  Si en algún momento parece necesaria, la respuesta es una función
+  `security definer` en la base, no traer esa key acá.
+- `.env*` ya está en `.gitignore` — no tocar esa línea, no usar
+  `git add -f` sobre un archivo `.env*`.
+- Al agregar una variable de entorno nueva, actualizar `.env.example` con el
+  **nombre** de la variable y un placeholder (`sk-...`, `https://tu-proyecto...`),
+  nunca el valor real.
+- **Antes de cualquier `git add`/commit que toque configuración, `.env*`,
+  clientes de Supabase o archivos nuevos**, revisar `git status` y
+  `git diff` en busca de valores que parezcan keys/tokens/URLs reales. Si
+  hay dudas sobre si algo es sensible, preguntar antes de commitear, no
+  después.
+- Si una key llegó a commitearse (aunque sea la anon key): avisar al equipo
+  y rotarla en el dashboard de Supabase de inmediato. Borrar el commit no
+  alcanza, la key ya quedó expuesta en el historial y en cualquier fork.
+
 ## Equipo
 
 Dos desarrolladores: **David Álvarez** y **Sebastián Cortez**. Ambos pushean

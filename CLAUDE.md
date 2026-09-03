@@ -10,6 +10,11 @@ Sebastián Cortez corren los mismos skills en OpenCode y Antigravity, así que
 `AGENTS.md` es el único lugar donde eso se escribe. Lo que sigue es lo
 genuinamente específico de Claude Code.
 
+**Regla innegociable, léela primero:** este repo es público — la sección
+"Seguridad — repo público" de `AGENTS.md` (justo antes de "Equipo") aplica
+antes de crear o tocar cualquier archivo que involucre credenciales de
+Supabase u otras keys. No se duplica aquí a propósito; se sigue desde ahí.
+
 ## Verificar UI
 
 Para un cambio de UI, antes de darlo por terminado: `pnpm dev` (si ya hay un
