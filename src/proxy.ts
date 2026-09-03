@@ -6,7 +6,7 @@ export async function proxy(request: NextRequest) {
 
   const hasSession = request.cookies
     .getAll()
-    .some((cookie) => cookie.name.startsWith('sb-') && cookie.name.endsWith('-auth-token'));
+    .some((cookie) => cookie.name.startsWith('sb-') && cookie.name.includes('-auth-token'));
 
   const { pathname } = request.nextUrl;
   const isAdminRoute = pathname.startsWith('/admin');
