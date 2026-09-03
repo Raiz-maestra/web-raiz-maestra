@@ -13,6 +13,12 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-09-03 16:20 — Layout del dashboard de admin con sidebar de navegación
+- `src/app/admin/layout.tsx` (nuevo: guarda con `requireAdmin()`, sidebar con las 6 secciones, cerrar sesión)
+- `src/app/admin/page.tsx` (nuevo: redirige `/admin` a `/admin/verificacion`)
+- `src/components/ui/sidebar.tsx`, `badge.tsx`, `sheet.tsx`, `tooltip.tsx`, `input.tsx`, `separator.tsx`, `skeleton.tsx` (shadcn CLI, dependencias de `sidebar`)
+- `src/hooks/use-mobile.ts` (shadcn CLI; ajustado para evitar `setState` síncrono dentro del efecto y que pasara `pnpm lint`)
+
 ## 2026-09-03 13:10 — Contexto de proyecto para agentes (app móvil, datos, reglas del dashboard)
 - `AGENTS.md` (reescrito: relación con `~/Sites/app-rurales`, tablas por módulo, regla de `mood_entries`, reglas de Supabase, mapa de docs)
 - `CLAUDE.md` (solo lo específico de Claude Code: verificación en Chrome, MCP de Supabase)
