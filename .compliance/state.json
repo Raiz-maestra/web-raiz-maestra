@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "generated_at": "2026-09-03T16:55:05Z",
+  "git_commit": "25403be",
+  "evidence_source": {
+    "repo": "app-rurales",
+    "git_commit": "42fd241",
+    "note": "Desviación documentada: la evidencia técnica (schema, RLS, proveedores) se auditó en el repo app-rurales; este estado y los documentos generados se versionan en app-rurales-landingpage por decisión explícita del usuario (es el repo con URL pública para las tiendas)."
+  },
+  "company": {
+    "razon_social": "Universidad Católica del Norte (UCN) — Proyecto Raíz Maestra",
+    "rut": "[COMPLETAR: RUT UCN o unidad responsable]",
+    "tamano": "grande (universidad); proyecto operado por un equipo reducido de 2 desarrolladores"
+  },
+  "active_packs": ["ley-21595", "ley-21719"],
+  "controls": {
+    "gov-responsable": { "status": "partial", "evidence": "UCN designada como responsable en todos los documentos generados", "remediation": "Completar nombre y cargo del coordinador UCN designado como responsable de datos / encargado de prevención" },
+    "gov-registro": { "status": "pass", "evidence": ".compliance/docs/21719-rat.md, .compliance/docs/21595-matriz-riesgos.md", "remediation": "" },
+    "gov-politicas": { "status": "pass", "evidence": ".compliance/docs/21719-politica-privacidad.md, .compliance/docs/21595-codigo-etica.md", "remediation": "" },
+    "gov-capacitacion": { "status": "unknown", "evidence": "Compromiso documental en 21595-modelo-prevencion-delitos.md §6, sin evidencia de ejecución", "remediation": "Registrar cuándo se capacita al equipo" },
+    "gov-auditoria": { "status": "fail", "evidence": "", "remediation": "Contratar supervisión externa anual del MPD (insumo no self-service, ~UF 3-5)" },
+    "gov-disciplinario": { "status": "partial", "evidence": "21595-codigo-etica.md §6 remite a 'normativa aplicable de UCN' sin detalle", "remediation": "Definir régimen disciplinario concreto con UCN" },
+    "gov-denuncias": { "status": "partial", "evidence": ".compliance/docs/21595-reglamento-canal-denuncias.md — canal por correo definido, no difundido aún al equipo/usuarios", "remediation": "Publicar y difundir el canal appraizmaestra@gmail.com como canal de denuncias" },
+    "data-licitud": { "status": "pass", "evidence": "supabase/schema.sql:127 profiles.consent_accepted_at (app-rurales)", "remediation": "" },
+    "data-derechos": { "status": "partial", "evidence": ".compliance/docs/21719-canal-derechos.md — canal por correo, sin endpoint/flujo de exportación o borrado de cuenta en la app", "remediation": "Agregar pantalla 'Eliminar mi cuenta' y exportación de datos en app-rurales" },
+    "data-info": { "status": "pass", "evidence": ".compliance/docs/21719-politica-privacidad.md", "remediation": "" },
+    "data-minimizacion": { "status": "partial", "evidence": "21719-rat.md — plazos de retención con default propuesto, sin definición formal por UCN", "remediation": "Definir y publicar plazos exactos de retención por tipo de dato" },
+    "data-dpa": { "status": "partial", "evidence": ".compliance/docs/21719-dpa.md redactado; no verificado si se firmó/aceptó el DPA estándar de Supabase", "remediation": "Confirmar y firmar el DPA con Supabase, Inc." },
+    "data-transfer": { "status": "partial", "evidence": ".compliance/docs/21719-anexo-transferencias.md — mecanismo declarado (cláusulas modelo), región exacta de Supabase sin confirmar", "remediation": "Verificar región del proyecto Supabase en el dashboard" },
+    "data-consent-text": { "status": "pass", "evidence": ".compliance/docs/21719-consentimiento.md; supabase/schema.sql:127-128 consent_accepted_at / wellbeing_consent_at (app-rurales)", "remediation": "" },
+    "data-rights-channel": { "status": "pass", "evidence": ".compliance/docs/21719-canal-derechos.md, página /privacidad", "remediation": "" },
+    "data-eipd": { "status": "pass", "evidence": ".compliance/docs/21719-eipd.md — test corrido, obligatoria confirmada (dato sensible masivo), riesgo residual aceptable condicionado", "remediation": "Implementar MFA y log de auditoría para cerrar la condición del riesgo residual" },
+    "data-privacy-by-design": { "status": "pass", "evidence": "docs/DATA-MODEL.md — RLS en 21 tablas, mood_entries sin excepción de admin (app-rurales)", "remediation": "" },
+    "data-pseudonym": { "status": "fail", "evidence": "No se encontró seudonimización de datos en app-rurales", "remediation": "Evaluar seudonimizar identificadores en exports/analítica futura" },
+    "sec-tls": { "status": "pass", "evidence": "src/lib/supabase/client.ts — supabaseUrl https:// (app-rurales)", "remediation": "" },
+    "sec-rest": { "status": "partial", "evidence": "Cifrado en reposo a nivel de disco provisto por Supabase (supabase/schema.sql comentario l.876, app-rurales), sin cifrado a nivel de columna para datos sensibles", "remediation": "Evaluar cifrado a nivel de columna para mood_entries/support_requests si el riesgo lo justifica" },
+    "sec-passwords": { "status": "pass", "evidence": "src/repositories/AuthRepository.ts usa supabase.auth (GoTrue) (app-rurales)", "remediation": "" },
+    "sec-mfa": { "status": "fail", "evidence": "Sin referencias a MFA/2FA/OTP en app-rurales", "remediation": "Habilitar MFA para cuentas con rol admin" },
+    "sec-logs": { "status": "fail", "evidence": "No existe tabla audit_log/activity_log en supabase/schema.sql (app-rurales)", "remediation": "Agregar tabla de audit log con actor + IP + timestamp para acciones administrativas" },
+    "sec-tenant": { "status": "pass", "evidence": "RLS por fila + funciones my_region()/my_microcentro_id() (app-rurales)", "remediation": "" },
+    "sec-secrets": { "status": "partial", "evidence": "Credenciales vía env vars, pero .env.example versiona una anon key real en vez de placeholder (app-rurales)", "remediation": "Reemplazar el valor real de .env.example por un placeholder" },
+    "sec-backups": { "status": "unknown", "evidence": "No verificable desde el código; depende de la configuración de backups en el dashboard de Supabase", "remediation": "Confirmar política de backups en el dashboard" },
+    "inc-brechas": { "status": "pass", "evidence": ".compliance/docs/21719-plan-respuesta-brechas.md, .compliance/docs/21719-registro-vulneraciones.md", "remediation": "" },
+    "ctrl-interno": { "status": "partial", "evidence": ".compliance/docs/21595-matriz-riesgos.md con filas [COMPLETAR] pendientes de info de UCN sobre manejo de fondos", "remediation": "Completar matriz de riesgos con la unidad administrativa de UCN" }
+  },
+  "frameworks": {
+    "ley-21719": { "score": 0.67, "controls_required": 24, "pass": 12, "partial": 8, "fail": 3, "unknown": 1 },
+    "ley-21595": { "score": 0.5, "controls_required": 8, "pass": 2, "partial": 4, "fail": 1, "unknown": 1 }
+  }
+}
