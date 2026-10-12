@@ -13,6 +13,9 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-10-12 19:49 — Reconstruir producción tras configurar variables de Supabase
+- Configuración externa: el responsable confirmó NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY en Vercel Production. El despliegue anterior aún devolvía 500 en /login y no incorporaba el cliente en callback; este commit genera un build nuevo sin guardar valores en el repo.
+
 ## 2026-10-12 19:34 — Completar retorno de confirmación y recuperación de contraseña
 - `src/app/auth-callback/`, `src/app/reset-password/` (valida sesión, elimina tokens del historial, formulario de recuperación y enlace al scheme móvil; sesión temporal sin persistencia)
 - Pruebas: build Next.js y parser/validación de contraseña. Production requiere NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY configuradas en Vercel.
