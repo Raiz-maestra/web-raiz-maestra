@@ -13,6 +13,10 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-10-12 19:34 — Completar retorno de confirmación y recuperación de contraseña
+- `src/app/auth-callback/`, `src/app/reset-password/` (valida sesión, elimina tokens del historial, formulario de recuperación y enlace al scheme móvil; sesión temporal sin persistencia)
+- Pruebas: build Next.js y parser/validación de contraseña. Production requiere NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY configuradas en Vercel.
+
 ## 2026-10-12 17:56 — Actualizar políticas y eliminación de cuenta de Raíz Maestra
 - `src/app/privacidad/page.tsx`, `src/app/terminos/page.tsx`, `src/app/eliminar-cuenta/page.tsx`, `src/components/legal-page.tsx` (responsable Rodrigo Alberto Espinoza Vásquez, correo público, tratamiento real sin RUT/push remoto ni plazos inventados, instrucciones de eliminación y navegación)
 - `src/app/admin/verificacion/actions.ts`, `src/app/admin/verificacion/page.tsx`, `src/lib/supabase/dal.ts` (aprobación atómica compartida con la app y denegación de admins suspendidos; usa la migración aplicada en Supabase y documentada en el repo móvil)
