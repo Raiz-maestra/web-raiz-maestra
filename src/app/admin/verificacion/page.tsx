@@ -6,11 +6,11 @@ type PendingRow = {
   id: string;
   user_id: string;
   created_at: string;
-  profiles: { nombre: string; apellidos: string; rut: string; schools: { nombre: string } | null } | null;
+  profiles: { nombre: string; apellidos: string; schools: { nombre: string } | null } | null;
 };
 
 const PENDING_COLUMNS =
-  'id, user_id, created_at, profiles!verification_requests_user_id_fkey(nombre, apellidos, rut, schools(nombre))';
+  'id, user_id, created_at, profiles!verification_requests_user_id_fkey(nombre, apellidos, schools(nombre))';
 
 export default async function VerificacionPage() {
   await requireAdmin();
@@ -32,7 +32,7 @@ export default async function VerificacionPage() {
       {solicitudes.map((s) => (
         <div key={s.id} className="rounded-[var(--radius-rm)] border bg-white p-4">
           <p className="font-semibold">
-            {s.profiles?.nombre} {s.profiles?.apellidos} — {s.profiles?.rut}
+            {s.profiles?.nombre} {s.profiles?.apellidos}
           </p>
           <p className="text-sm text-[var(--color-rm-ink)]/70">{s.profiles?.schools?.nombre}</p>
           <div className="mt-2 flex gap-2">

@@ -13,6 +13,11 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-10-12 19:59 — Alinear consultas del panel con el modelo actual
+- `src/app/admin/usuarios/page.tsx` (admin_list_users reemplaza la vista retirada)
+- `src/app/admin/verificacion/page.tsx` (retira RUT eliminado del modelo y de la app; mantiene aprobación atómica)
+- Fallo reproducido en producción con administrador temporal: Usuarios 500. Cambios sin nuevas tablas ni permisos.
+
 ## 2026-10-12 19:49 — Reconstruir producción tras configurar variables de Supabase
 - Configuración externa: el responsable confirmó NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY en Vercel Production. El despliegue anterior aún devolvía 500 en /login y no incorporaba el cliente en callback; este commit genera un build nuevo sin guardar valores en el repo.
 

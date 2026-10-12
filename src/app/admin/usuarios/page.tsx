@@ -18,8 +18,7 @@ export default async function UsuariosPage() {
   const supabase = await createClient();
 
   const { data, error } = await supabase
-    .from('admin_users_view')
-    .select('user_id, nombre, apellidos, email, school_nombre, is_active, is_verified, storage_quota_mb')
+    .rpc('admin_list_users')
     .order('nombre');
   if (error) throw error;
 
