@@ -13,6 +13,10 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-10-12 17:56 — Actualizar políticas y eliminación de cuenta de Raíz Maestra
+- `src/app/privacidad/page.tsx`, `src/app/terminos/page.tsx`, `src/app/eliminar-cuenta/page.tsx`, `src/components/legal-page.tsx` (responsable Rodrigo Alberto Espinoza Vásquez, correo público, tratamiento real sin RUT/push remoto ni plazos inventados, instrucciones de eliminación y navegación)
+- `src/app/admin/verificacion/actions.ts`, `src/app/admin/verificacion/page.tsx`, `src/lib/supabase/dal.ts` (aprobación atómica compartida con la app y denegación de admins suspendidos; usa la migración aplicada en Supabase y documentada en el repo móvil)
+
 ## 2026-09-03 17:05 — Sección de moderación de contenido en el dashboard (RF-029)
 - `src/app/admin/moderacion/page.tsx` (nuevo: bandeja de `content_reports` `pendiente`, embed FK explícito `public_profiles!content_reports_reporter_id_fkey(...)` — mismo patrón que la Tarea 7, confirmado contra `AdminRepository.listPendingReports()`; botones descartar/ocultar)
 - `src/app/admin/moderacion/actions.ts` (nuevo: `resolveReport`, `hideMaterial`, `hideMessage` — soft-hide, nunca DELETE)

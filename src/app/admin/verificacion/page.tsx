@@ -36,7 +36,7 @@ export default async function VerificacionPage() {
           </p>
           <p className="text-sm text-[var(--color-rm-ink)]/70">{s.profiles?.schools?.nombre}</p>
           <div className="mt-2 flex gap-2">
-            <form action={approveVerification.bind(null, s.id, s.user_id)}>
+            <form action={approveVerification.bind(null, s.id)}>
               <button type="submit" className="rounded bg-[var(--color-rm-green)] px-3 py-1 text-white">
                 Aprobar
               </button>

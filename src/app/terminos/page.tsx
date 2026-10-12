@@ -9,11 +9,10 @@ export const metadata: Metadata = {
 
 export default function TerminosPage() {
   return (
-    <LegalPage title="Términos de Uso" updated="3 de septiembre de 2026">
+    <LegalPage title="Términos de Uso" updated="12 de octubre de 2026">
       <LegalSection title="1. Quiénes ofrecen el servicio">
         <p>
-          Raíz Maestra es una app desarrollada en el marco de un proyecto de la Universidad Católica
-          del Norte (UCN), operada técnicamente por David Álvarez Barraza y Sebastián Cortez. Al crear
+          Raíz Maestra es un servicio para docentes, cuyo responsable es RODRIGO ALBERTO ESPINOZA VASQUEZ. Al crear
           una cuenta aceptas estos Términos y nuestra{" "}
           <a className="font-bold text-rm-ink underline" href="/privacidad">
             Política de Privacidad
@@ -24,9 +23,7 @@ export default function TerminosPage() {
 
       <LegalSection title="2. Quién puede usar la app">
         <p>
-          Raíz Maestra está dirigida a docentes que ejercen o han ejercido en escuelas rurales de
-          Chile, mayores de edad. La verificación de tu condición de docente se realiza contra el
-          Directorio Oficial de Establecimientos Educacionales de MINEDUC. No está dirigida a
+          Raíz Maestra está dirigida a docentes mayores de edad de Chile, con especial foco en escuelas rurales. La solicitud de verificación se revisa por el equipo de administración con la información de tu perfil y establecimiento. No está dirigida a
           estudiantes ni a menores de edad.
         </p>
       </LegalSection>
@@ -34,8 +31,7 @@ export default function TerminosPage() {
       <LegalSection title="3. Tu cuenta">
         <p>
           Eres responsable de la información que entregas al registrarte y de mantener la
-          confidencialidad de tu contraseña. Puedes solicitar la eliminación de tu cuenta en cualquier
-          momento escribiendo a{" "}
+          confidencialidad de tu contraseña. Puedes eliminar tu cuenta desde Perfil → Eliminar mi cuenta o solicitar asistencia escribiendo a{" "}
           <a className="font-bold text-rm-ink underline" href="mailto:appraizmaestra@gmail.com">
             appraizmaestra@gmail.com
           </a>
@@ -49,7 +45,7 @@ export default function TerminosPage() {
           declaras que tienes derecho a compartir ese contenido y que es tuyo o cuentas con la
           autorización correspondiente. Conservas la propiedad intelectual del material que subes;
           nos otorgas una licencia no exclusiva para almacenarlo y mostrarlo dentro de la app a otros
-          docentes verificados, con el único fin de operar el servicio.
+          usuarios autenticados, con el único fin de operar el servicio.
         </p>
         <p>
           <strong className="text-rm-ink">
@@ -68,7 +64,7 @@ export default function TerminosPage() {
 
       <LegalSection title="5. Mentorías y red de apoyo">
         <p>
-          Las mentorías entre pares y las consultas a la red de apoyo (salud mental, educación
+          La selección del rol de mentor no acredita por sí sola un título profesional. Las consultas son visibles a los mentores del área seleccionada. Las mentorías entre pares y las consultas a la red de apoyo (salud mental, educación
           diferencial, gestión SLEP) son un espacio de acompañamiento entre docentes y no reemplazan
           atención profesional de salud formal. Si estás viviendo una emergencia, contacta a los
           canales de emergencia correspondientes.
@@ -107,11 +103,7 @@ export default function TerminosPage() {
         </p>
       </LegalSection>
 
-      <p className="text-sm text-rm-ink-muted">
-        Este documento no constituye asesoría legal. Es un borrador redactado para cumplir con los
-        requisitos de publicación de Play Store y App Store, complementario a la Política de
-        Privacidad.
-      </p>
+
     </LegalPage>
   );
 }

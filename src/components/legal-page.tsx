@@ -44,13 +44,14 @@ export function LegalPage({
             <Image src="/icon.png" alt="" width={28} height={28} className="rounded-lg" />
             <span className="text-sm text-rm-ink-secondary">© 2026 Raíz Maestra</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6">
             <Link href="/privacidad" className="text-sm font-bold text-rm-ink-secondary hover:text-rm-ink">
               Privacidad
             </Link>
             <Link href="/terminos" className="text-sm font-bold text-rm-ink-secondary hover:text-rm-ink">
               Términos
             </Link>
+            <Link href="/eliminar-cuenta" className="text-sm font-bold text-rm-ink-secondary hover:text-rm-ink">Eliminar cuenta</Link>
             <a
               href="mailto:appraizmaestra@gmail.com"
               className="text-sm font-bold text-rm-ink-secondary hover:text-rm-ink"

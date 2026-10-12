@@ -15,11 +15,11 @@ export const requireAdmin = cache(async () => {
 
   const { data: profile, error } = await supabase
     .from('profiles')
-    .select('base_role')
+    .select('base_role, is_active')
     .eq('user_id', user.id)
     .single();
 
-  if (error || profile?.base_role !== 'admin') {
+  if (error || profile?.base_role !== 'admin' || !profile.is_active) {
     await supabase.auth.signOut();
     redirect('/login?error=sin-acceso');
   }

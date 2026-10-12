@@ -4,22 +4,11 @@ import { revalidatePath } from 'next/cache';
 import { requireAdmin } from '@/lib/supabase/dal';
 import { createClient } from '@/lib/supabase/server';
 
-export async function approveVerification(requestId: string, userId: string) {
-  const { userId: adminId } = await requireAdmin();
+export async function approveVerification(requestId: string) {
+  await requireAdmin();
   const supabase = await createClient();
-  const now = new Date().toISOString();
-
-  const { error: requestError } = await supabase
-    .from('verification_requests')
-    .update({ status: 'aprobada', resolved_by: adminId, resolved_at: now })
-    .eq('id', requestId);
-  if (requestError) throw requestError;
-
-  const { error: profileError } = await supabase
-    .from('profiles')
-    .update({ is_verified: true })
-    .eq('user_id', userId);
-  if (profileError) throw profileError;
+  const { error } = await supabase.rpc('approve_verification', { p_request_id: requestId });
+  if (error) throw error;
 
   revalidatePath('/admin/verificacion');
 }
