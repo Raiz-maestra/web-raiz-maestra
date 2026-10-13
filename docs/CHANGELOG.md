@@ -13,6 +13,9 @@ commit que lo introduce. Formato:
 - archivo/carpeta tocado (uno por línea si son varios)
 ```
 
+## 2026-10-13 02:58 — Versionar el plan histórico del dashboard sin credenciales
+- `docs/superpowers/plans/2026-09-03-dashboard-admin.md` (plan pendiente de Git; cuentas QA por canal privado y nota de estado histórico)
+
 ## 2026-10-12 19:59 — Alinear consultas del panel con el modelo actual
 - `src/app/admin/usuarios/page.tsx` (admin_list_users reemplaza la vista retirada)
 - `src/app/admin/verificacion/page.tsx` (retira RUT eliminado del modelo y de la app; mantiene aprobación atómica)
